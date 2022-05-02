@@ -15,7 +15,7 @@ struct KISI
     double oran;
     int sayi;
 
-    void (*delete)(struct KISI*);
+    void (*delete_Kisi)(struct KISI*);
 };
 typedef struct KISI* Kisi;
 Kisi new_Kisi(char*, double, double, int);

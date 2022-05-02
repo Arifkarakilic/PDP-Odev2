@@ -7,7 +7,7 @@ Kisi new_Kisi(char* adSoyad, double para, double oran, int sayi){
     this -> para = para;
     this -> oran = oran;
     this -> sayi = sayi;
-    this -> delete = &delete_Kisi;
+    this -> delete_Kisi = &delete_Kisi;
 
     return this;
 }

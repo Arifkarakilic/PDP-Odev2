@@ -136,4 +136,5 @@ Dosya new_Dosya()
    this->kisi = 0;
    this->kisiOku = &kisiOku;
    this->getSayi = &getSayi;
+   this->delete = &delete_Dosya;
 }

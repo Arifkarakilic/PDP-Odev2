@@ -16,7 +16,7 @@ struct OYUN
     char* enZengin;
 
     void (*oyun)(struct OYUN*);
-    void (*yazdir)(struct OYUN*);
+    //void (*yazdir)(struct OYUN*);
     void (*delete)(struct OYUN*);
 };
 typedef struct OYUN* Oyun;
