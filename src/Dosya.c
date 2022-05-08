@@ -1,3 +1,10 @@
+/** *
+* @author Suleyman Arif Karakilic
+* @since 15 Mart 2022
+* 1.Ögretim / C
+* */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -17,8 +24,6 @@ int* getSayi(const Dosya this,int* sansliSayi)
    int satirSayi = 0;
    
    char satir1[5];
-   //malloc()
-   //fscanf()
    while (fgets(satir1, 5, dosya))
    {
       satirSayi++;
@@ -38,11 +43,11 @@ int* getSayi(const Dosya this,int* sansliSayi)
       
       
    }
-   //int *ip = &sanslidizi;
    *sansliSayi = satirSayi;
 
 
    fclose(dosya);
+   free(sanslidizi);
    return sanslidizi;
   
 }
@@ -68,12 +73,8 @@ Kisi *kisiOku(const Dosya this, int *kisiSayisi)
    dosya = fopen("doc/Kisiler.txt", "r");
    const int size = satirSayi1;
    Kisi* gelenarray=malloc(sizeof(Kisi)*size);
-   // = malloc(sizeof(Kisi) * satirSayi); // ********************************** dizi haline getirilerek pointer olmaktan kurtarılacak
    size_t bufsize = 60;
    char *satir2 = malloc(sizeof(char) * bufsize);
-   // ssize_t satirBoyut;
-   // satirBoyut = getline(&satir2, &bufsize, dosya);
-   // printf("%d %s",satirBoyut,satir2);
    int index = 0;
    while (fgets(satir2, bufsize, dosya))
    {
@@ -85,7 +86,6 @@ Kisi *kisiOku(const Dosya this, int *kisiSayisi)
       int sayac = 0;
       char *ayrac = "#";
       char *cop;
-      //adSoyad = strtok(satir2, ayrac);
       strcpy(adSoyad,strtok(satir2, ayrac));
       while (sayac < 3)
       {
@@ -108,8 +108,7 @@ Kisi *kisiOku(const Dosya this, int *kisiSayisi)
       }
       sayac = 0;
       Kisi k = new_Kisi(adSoyad, para, oran, sayi);
-      gelenarray[index] = new_Kisi(adSoyad, para, oran, sayi); // k;
-                                                               // printf("k: %p/tindex:%i\n",k, (gelenarray[index])->sayi);
+      gelenarray[index] = new_Kisi(adSoyad, para, oran, sayi);
       index++;
    }
 
@@ -136,5 +135,7 @@ Dosya new_Dosya()
    this->kisi = 0;
    this->kisiOku = &kisiOku;
    this->getSayi = &getSayi;
-   this->delete = &delete_Dosya;
+   this->delete_Dosya = &delete_Dosya;
+
+   return this;
 }

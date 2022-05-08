@@ -16,15 +16,13 @@ struct DOSYA
 
     Kisi* (*kisiOku)( struct DOSYA*, int *kisiSayisi);
     int* (*getSayi)(struct DOSYA*, int* sansliSayi);
-    void (*delete)(struct DOSYA*);
+    void (*delete_Dosya)(struct DOSYA*);
 };
 typedef struct DOSYA* Dosya;
 
 Dosya new_Dosya();
-// short* getSayi(const Dosya);
-// Kisi* kisiOku( const Dosya);
-// void delete_Dosya(const Dosya);
 
+void delete_Dosya(const Dosya);
 
 
 #endif // DOSYA_H

@@ -16,12 +16,12 @@ struct OYUN
     char* enZengin;
 
     void (*oyun)(struct OYUN*);
-    //void (*yazdir)(struct OYUN*);
-    void (*delete)(struct OYUN*);
+    void (*delete_Oyun)(struct OYUN*);
 };
 typedef struct OYUN* Oyun;
 
 Oyun new_Oyun();
+void delete_Oyun(const Oyun);
 
 
 

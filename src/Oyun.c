@@ -1,3 +1,12 @@
+/** *
+* @author Suleyman Arif Karakilic
+* @since 15 Mart 2022
+* 1.Ögretim / C
+* */
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,6 +16,8 @@
 #include "Dosya.h"
 #include "Kisi.h"
 #include "Oyun.h"
+
+
 
 void *oyun(const Oyun this)
 {
@@ -23,7 +34,6 @@ void *oyun(const Oyun this)
     Kisi enZengin = kisiler[0];
     for (int i = 0; i < sansliSayi; i++)
     {
-        // printf("Sansli Sayi: %d\n", sansliSayilar[i]);
         for (int j = 0; j < kisiSayisi; j++)
         {
 
@@ -41,13 +51,11 @@ void *oyun(const Oyun this)
                 {
 
                     kisiler[j]->para -= degisken2;
-                    //printf("parasiii %lf",kisiler[j]->para);
                     masabakiye = masabakiye + degisken2;
                 }
                 if (kisiler[j]->para > enZengin->para)
                 {
                     enZengin = kisiler[j];
-                    //printf("parasi1 %lf, adi %s, asil para%lf\n",enZengin->para, kisiler[j]->adSoyad,kisiler[j]->para);
                 }
             }
         }
@@ -577,6 +585,9 @@ void *oyun(const Oyun this)
             GetStdHandle(STD_OUTPUT_HANDLE), mb2);
 
         printf("MASA BAKIYE: %.2lf", masabakiye);
+        getch();
+
+        free(enZengin);
 }
 
 Oyun new_Oyun()
@@ -587,5 +598,21 @@ Oyun new_Oyun()
     this->kasa = 0;
     this->enZengin = NULL;
     this->oyun = &oyun;
-    // this->yazdir = &yazdir;
+    this->delete_Oyun = &delete_Oyun;
+
+    return this;
+}
+
+void delete_Oyun(const Oyun this)
+{
+    if (this == NULL)
+        return;
+    for (int j = 0; j <this->kisiler; j++)
+    {
+       free(this->kisiler[j]);
+    }
+
+    free(this->kisiler);
+    free(this->sansliSayilar);
+    free(this);
 }

@@ -1,3 +1,9 @@
+/** *
+* @author Suleyman Arif Karakilic
+* @since 15 Mart 2022
+* 1.Ögretim / C
+* */
+
 #include "Kisi.h"
 
 Kisi new_Kisi(char* adSoyad, double para, double oran, int sayi){
